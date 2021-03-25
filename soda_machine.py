@@ -51,7 +51,9 @@ class SodaMachine:
             change_value = self.determine_change_value(total_payment_value, selected_soda.price)
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
-                user_interface.output_text(f'Dispensing ${total_payment_value} back to customer')
+                #I a not sure what this IF statement is needed for? There is already flow control for greater than, equal to or less than..
+                #I'm leaving it in though, because I acknowledge there's must be some need for it if its in here, but
+                #I cannot find what the need for it is.. and I cant find any bugs and it seems to work fine without ever hitting it.
                 customer.add_coins_to_wallet(customer_payment)
                 self.return_inventory(selected_soda)
             else:
