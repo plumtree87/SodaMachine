@@ -11,7 +11,7 @@ class SodaMachine:
         """Method will fill SodaMachine's register with certain amounts of each coin when called."""
         for index in range(8):
             self.register.append(coins.Quarter())
-        for index in range(10):
+        for index in range(5):
             self.register.append(coins.Dime())
         for index in range(20):
             self.register.append(coins.Nickel())
@@ -51,9 +51,10 @@ class SodaMachine:
             change_value = self.determine_change_value(total_payment_value, selected_soda.price)
             customer_change = self.gather_change_from_register(change_value)
             if customer_change is None:
-                #I a not sure what this IF statement is needed for? There is already flow control for greater than, equal to or less than..
-                #I'm leaving it in though, because I acknowledge there's must be some need for it if its in here, but
-                #I cannot find what the need for it is.. and I cant find any bugs and it seems to work fine without ever hitting it.
+                total_value = 0
+                for coin in customer_payment:
+                    total_value += coin.value
+                print(f"Dispensing {total_value}")
                 customer.add_coins_to_wallet(customer_payment)
                 self.return_inventory(selected_soda)
             else:
