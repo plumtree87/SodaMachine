@@ -1,10 +1,10 @@
-from coins import Coin, Quarter, Dime, Nickel, Penny
+from coins import Quarter, Dime, Nickel, Penny
+
 
 class Wallet:
     def __init__(self):
         self.money = []
         self.total_value = 0
-
 
     def fill_wallet(self):
         """Method will fill wallet's money list with certain amount of each type of coin when called."""
