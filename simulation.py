@@ -9,8 +9,11 @@ class Simulation:
     def run_simulation(self):
         """The central method called in main.py."""
         customer = Customer()
+        customer.wallet.fill_wallet()
         soda_machine = SodaMachine()
-        will_proceed = False
+        soda_machine.fill_register()
+        soda_machine.fill_inventory()
+        will_proceed = True
         while will_proceed:
             user_option = user_interface.simulation_main_menu()
             if user_option == 1:

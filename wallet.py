@@ -3,6 +3,7 @@ from coins import Coin, Quarter, Dime, Nickel, Penny
 class Wallet:
     def __init__(self):
         self.money = []
+        self.total_value = 0
 
 
     def fill_wallet(self):

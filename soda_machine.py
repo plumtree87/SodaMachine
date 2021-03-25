@@ -1,4 +1,6 @@
-from coins import Dime, Nickel, Penny, Quarter, Coin
+import coins
+import cans
+import user_interface
 
 class SodaMachine:
     def __init__(self):
@@ -35,7 +37,7 @@ class SodaMachine:
 
         selected_soda_name = user_interface.soda_selection(self.inventory)
 
-        selected_soda = self.get_inventory_soda(selected_soda_name)
+        selected_soda_name = self.get_inventory_soda(selected_soda_name)
 
         customer_payment = customer.gather_coins_from_wallet(selected_soda_name)
 
@@ -112,6 +114,7 @@ class SodaMachine:
 
     def calculate_coin_value(self, coin_list):
         """Takes in a list of coins, returns the monetary value of list."""
+        total_value = 0
         for coin in coin_list:
             total_value += coin.value
         return round(total_value, 2)
@@ -119,16 +122,16 @@ class SodaMachine:
     def get_inventory_soda(self, selected_soda_name):
         """Returns the first instance of a can whose name matches the selected_soda_name parameter"""
         for can in self.inventory:
-            if can == selected_soda_name:
+            if can.name == selected_soda_name:
                 self.inventory.remove(can)
                 return can
         return None
 
-    def return_inventory(chosen_soda):
+    def return_inventory(self, chosen_soda):
         """Re-adds a remove can back to inventory upon unsuccessful purchase attempt"""
         self.inventory.append(chosen_soda)
 
-    def deposit_coins_into_register(self, coin_list):
+    def deposit_coins_into_register(self, coins_list):
         """Takes in list of coins as argument, adds each coin from list to the register"""
         for coin in coins_list:
             self.register.append(coins_list)
